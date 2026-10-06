@@ -1,0 +1,38 @@
+name: MultiCast
+options:
+  bundleIdPrefix: com.multicast
+  xcodeVersion: "15.0"
+  deploymentTarget:
+    macOS: "14.0"
+  defaultConfig: Release
+
+settings:
+  base:
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+    SWIFT_VERSION: "5.9"
+    ARCHS: "arm64 x86_64"
+    ONLY_ACTIVE_ARCH: "NO"
+    ENABLE_HARDENED_RUNTIME: "YES"
+
+targets:
+  MultiCast:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sources
+        excludes:
+          - "**/.DS_Store"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.multicast.MultiCast
+        INFOPLIST_FILE: Sources/Info.plist
+        CODE_SIGN_ENTITLEMENTS: Sources/MultiCast.entitlements
+        PRODUCT_NAME: MultiCast
+        MARKETING_VERSION: "1.1.0"
+        CURRENT_PROJECT_VERSION: "2"
+        GENERATE_INFOPLIST_FILE: "NO"
+        COMBINE_HIDPI_IMAGES: "YES"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        SWIFT_OBJC_BRIDGING_HEADER: Sources/MultiCast-Bridging-Header.h
+    resources:
+      - path: Sources/Assets.xcassets
